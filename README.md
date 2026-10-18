@@ -1,24 +1,58 @@
-# Pixel Perfect
+# Febiola Hortensia Lengkong — Portfolio
 
-Implement exactly the screenshot and nothing else
+A personal portfolio showcasing my work across frontend development, full-stack web projects, and UI/UX design. The site pairs a playful Y2K Neo-Brutalist visual style with interactive project folders, case-study modals, and responsive layouts.
 
-This project was built with [Lovable](https://lovable.dev).
+## Features
 
-## Build with Lovable
+- Responsive portfolio sections for my introduction, experience, projects, certifications, and contact information.
+- Interactive project folders with detailed previews, screenshot galleries, technology stacks, and project links.
+- Certificate preview modals that keep visitors on the portfolio.
+- Persistent light and dark themes.
+- Custom animated cursor and motion effects.
+- Mobile navigation and layouts designed for touch screens.
+- Direct email contact links.
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/70b7189c-8354-4647-88cd-6e6c3a1b794f).
+## Tech Stack
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+- React 19 and TypeScript
+- TanStack Start and TanStack Router
+- Tailwind CSS 4
+- Framer Motion
+- Vite
+- Vitest and Testing Library
 
-## Development
+## Getting Started
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Requirements: Node.js and npm.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```bash
+git clone https://github.com/febbyyyyh/portfolio-febby.git
+cd portfolio-febby
+npm install
 npm run dev
 ```
+
+The development server prints its local URL after it starts.
+
+## Available Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Create a production build |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run ESLint |
+| `npm test` | Run the test suite |
+
+## Updating Portfolio Content
+
+- Edit project descriptions, technologies, highlights, links, and screenshot paths in [`src/lib/projects.ts`](./src/lib/projects.ts).
+- Replace the sample image files in `public/assets/` with your own portfolio assets as needed.
+- Update the portfolio copy, contact information, and section content in [`src/routes/index.tsx`](./src/routes/index.tsx).
+
+Some project descriptions, screenshots, and external links are currently sample content and should be replaced with the final project details.
+
+## Contact
+
+- Email: [febilengkong7@gmail.com](mailto:febilengkong7@gmail.com)
+- GitHub: [@febbyyyyh](https://github.com/febbyyyyh)
