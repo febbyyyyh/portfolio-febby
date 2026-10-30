@@ -16,6 +16,14 @@ describe("App routing", () => {
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
 
+  it("matches the standalone archive page", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+
+    const matches = router.matchRoutes("/archive");
+
+    expect(matches.at(-1)?.routeId).toBe("/archive");
+  });
+
   it("matches a detail page for every portfolio project", () => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
 

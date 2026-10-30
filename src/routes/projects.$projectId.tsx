@@ -14,7 +14,6 @@ import { PROJECTS } from "../lib/projects";
 export const Route = createFileRoute("/projects/$projectId")({
   head: () => ({
     meta: [
-      { title: "Project Details — Febiola Hortensia Lengkong" },
       {
         name: "description",
         content:
@@ -101,6 +100,9 @@ function ProjectDetail() {
               <h2 className="font-display text-2xl">About the project</h2>
             </div>
             <p className="mt-5 leading-relaxed text-muted-foreground">{project.description}</p>
+            {project.role && (
+              <p className="mt-4 border-l-4 border-primary pl-3 font-bold">Role: {project.role}</p>
+            )}
 
             <h3 className="mt-8 font-display text-lg">Highlights</h3>
             <ul className="mt-3 space-y-3">
@@ -135,20 +137,43 @@ function ProjectDetail() {
               </div>
             </section>
 
-            <section className="brutal rounded-3xl bg-card p-6">
-              <h2 className="font-display text-xl">Project link</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Replace the sample URL in the project data with the correct link.
-              </p>
-              <a
-                href={project.href}
-                target="_blank"
-                rel="noreferrer"
-                className="brutal brutal-press mt-5 flex items-center justify-between gap-3 rounded-xl bg-secondary px-4 py-3 font-bold text-secondary-foreground"
-              >
-                {project.sourceLabel} <ExternalLink size={18} />
-              </a>
-            </section>
+            {(project.liveHref || project.repositoryHref || project.designHref) && (
+              <section className="brutal rounded-3xl bg-card p-6">
+                <h2 className="font-display text-xl">Project links</h2>
+                <div className="mt-5 flex flex-col gap-3">
+                  {project.liveHref && (
+                    <a
+                      href={project.liveHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="brutal brutal-press flex items-center justify-between gap-3 rounded-xl bg-secondary px-4 py-3 font-bold text-secondary-foreground"
+                    >
+                      View Live Site <ExternalLink size={18} />
+                    </a>
+                  )}
+                  {project.repositoryHref && (
+                    <a
+                      href={project.repositoryHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="brutal brutal-press flex items-center justify-between gap-3 rounded-xl bg-accent px-4 py-3 font-bold text-accent-foreground"
+                    >
+                      GitHub Repo <ExternalLink size={18} />
+                    </a>
+                  )}
+                  {project.designHref && (
+                    <a
+                      href={project.designHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="brutal brutal-press flex items-center justify-between gap-3 rounded-xl bg-primary px-4 py-3 font-bold text-primary-foreground"
+                    >
+                      Figma Link <ExternalLink size={18} />
+                    </a>
+                  )}
+                </div>
+              </section>
+            )}
           </aside>
         </div>
 
@@ -172,7 +197,9 @@ function ProjectDetail() {
                   <img
                     src={screenshot.src}
                     alt={`${project.title} — ${screenshot.caption}`}
-                    className="aspect-[16/10] w-full rounded-xl border-2 border-ink object-cover"
+                    className={`aspect-[16/10] w-full rounded-xl border-2 border-ink ${
+                      screenshot.fit === "contain" ? "bg-card object-contain" : "object-cover"
+                    }`}
                   />
                 ) : (
                   <div className="project-screenshot-placeholder grid-paper relative flex aspect-[16/10] flex-col overflow-hidden rounded-xl border-2 border-ink bg-muted p-4">

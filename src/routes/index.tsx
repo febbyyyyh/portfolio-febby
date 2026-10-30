@@ -16,7 +16,6 @@ import {
   VolumeX,
   RotateCcw,
   Briefcase,
-  Users,
   GraduationCap,
   Palette,
   Code2,
@@ -29,10 +28,6 @@ import { PROJECTS, type Project } from "../lib/projects";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      {
-        title:
-          "Febiola Hortensia Lengkong, S.Kom — Fullstack & Frontend Web Developer | UI/UX Designer",
-      },
       {
         name: "description",
         content:
@@ -51,7 +46,7 @@ export const Route = createFileRoute("/")({
 });
 
 const NAV = ["About", "Experience", "Projects", "Certifications", "Contact"];
-const CV = "/assets/cv-febiola.pdf";
+const CV = "/assets/cv%20web%20devloper.pdf";
 const EMAIL = "febilengkong7@gmail.com";
 const MAILTO = `mailto:${EMAIL}`;
 const CONFETTI_COLORS = ["#FF5DA2", "#2BD980", "#A3E635", "#FFE6F0"];
@@ -110,6 +105,7 @@ function Index() {
       <Hero />
       <About />
       <Experience />
+      <FeaturedProject />
       <Projects />
       <Certifications />
       <EmergencyRoom />
@@ -183,6 +179,9 @@ function Navbar() {
               {n}
             </a>
           ))}
+          <a href="/archive" onClick={() => blip()} className="hover:text-primary">
+            Archive
+          </a>
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -194,7 +193,7 @@ function Navbar() {
           </button>
           <a
             href={CV}
-            download
+            download="Febiola-Hortensia-Lengkong-CV.pdf"
             className="brutal brutal-press hidden items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-sm font-bold text-secondary-foreground md:flex"
           >
             <Download size={16} /> CV
@@ -239,9 +238,12 @@ function Navbar() {
                 {n}
               </a>
             ))}
+            <a href="/archive" onClick={() => setOpen(false)}>
+              Archive
+            </a>
             <a
               href={CV}
-              download
+              download="Febiola-Hortensia-Lengkong-CV.pdf"
               className="brutal flex items-center gap-2 self-start rounded-full bg-secondary px-4 py-1.5 text-secondary-foreground"
             >
               <Download size={16} /> Download CV
@@ -377,7 +379,7 @@ function Hero() {
         <div className="brutal-lg relative rotate-2 overflow-hidden rounded-3xl bg-primary p-2">
           <img
             src="/assets/febby.jpg"
-            alt="Febiola Hortensia Lengkong mengenakan selempang wisuda"
+            alt="Febiola Hortensia Lengkong wearing a graduation sash"
             className="aspect-3/4 w-full rounded-2xl border-2 border-ink object-cover"
           />
           <span className="brutal absolute bottom-5 left-1/2 -translate-x-1/2 -rotate-2 whitespace-nowrap rounded-full bg-card px-4 py-2 font-pixel text-[9px]">
@@ -399,6 +401,7 @@ function Hero() {
 const TAGS = [
   "S.Kom",
   "React.js",
+  "Next.js",
   "Tailwind CSS",
   "Node.js",
   "Express.js",
@@ -415,6 +418,7 @@ const TAGS = [
 const SKILL_INFO: Record<string, string> = {
   "S.Kom": "Bachelor of Computer Science — Universitas Sam Ratulangi, Cum Laude (GPA 3.98/4.00) 🎓",
   "React.js": "Advanced — hooks, state management, component architecture",
+  "Next.js": "Currently learning — building familiarity with its core features and workflows",
   "Tailwind CSS": "Expert — design systems, custom tokens, animations",
   "Node.js": "Advanced — REST APIs, auth, middleware",
   "Express.js": "Advanced — routing, validation, clean structure",
@@ -424,7 +428,7 @@ const SKILL_INFO: Record<string, string> = {
   "Quality Assurance": "Skilled — test scenarios, responsiveness checks, bug hunting 🐛",
   "Responsive Layout": "Expert — mobile-first, accessible layouts",
   "DevOps Basics": "Certified — Dicoding DevOps fundamentals",
-  "Data Analysis": "Certified — data visualization & analytics (RevoU, Dicoding)",
+  "Data Analysis": "Foundational — continuing to develop data analysis and visualization skills",
   INFJ: "Personality — thoughtful, empathetic, detail-oriented",
   "Coffee Lover": "Fuel — espresso powered debugging sessions ☕",
 };
@@ -490,7 +494,7 @@ function About() {
             <MessageCircle size={18} />
           </span>
           <p className="brutal rounded-2xl rounded-tl-none bg-secondary px-4 py-2 font-bold text-secondary-foreground">
-            I want to know you 💬
+            Want to know what I do? 💬
           </p>
         </motion.div>
         <motion.div
@@ -501,7 +505,7 @@ function About() {
           className="flex justify-end"
         >
           <p className="brutal max-w-[90%] rounded-2xl rounded-tr-none bg-card px-4 py-2 font-bold">
-            Oh, Sure! This is... about ME ✨
+            I bring web development, design awareness, and a collaborative mindset. ✨
           </p>
         </motion.div>
       </div>
@@ -517,10 +521,14 @@ function About() {
           <h3 className="font-display text-3xl">ABOUT ME</h3>
         </div>
         <p className="mt-4 text-muted-foreground">
-          I'm a Computer Science graduate (S.Kom) from Universitas Sam Ratulangi, graduated Cum
-          Laude with a 3.98/4.00 GPA. I'm passionate about frontend engineering and clean UI/UX
-          design — transforming complex workflows into accessible, bold, and pixel-perfect digital
-          experiences. I also bring a QA mindset: if there's a bug, I'll find it. 🐛
+          I am an Informatics Engineering graduate specializing in Web Development, with a focus on
+          Frontend Development and a strong foundation in UI/UX and Graphic Design. I enjoy
+          transforming complex workflows into accessible, bold, and pixel-perfect digital
+          experiences, with thoughtful design and clear communication at the heart of my work. My
+          active background in campus organizations has refined my adaptability, problem-solving,
+          and collaborative skills. Detail-oriented and growth-minded, I am eager to bring a
+          practical combination of web development skills, design awareness, and team spirit to a
+          forward-thinking company.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           {TAGS.map((t) => (
@@ -536,49 +544,67 @@ function About() {
 const TABS = [
   {
     id: "work",
-    label: "Work & Technical",
+    label: "Work & Leadership",
     icon: Briefcase,
     items: [
       {
-        year: "Volunteer",
-        title: "Volunteer Graphic Designer",
+        year: "Web-Dev.XML",
+        title: "Quality Assurance & Web Tester",
         place:
-          "POTEMA.ID · Branding & visual campaigns — recognized as Best Volunteer Graphic Designer 🏅",
+          "Evaluated application responsiveness, validated model responses, and logged functional test scenarios.",
         color: "bg-primary",
       },
       {
-        year: "UNSRAT",
+        year: "Universitas Sam Ratulangi",
         title: "Database Technology Laboratory Assistant",
         place:
-          "Universitas Sam Ratulangi · Assisted laboratory courses, mentored students on relational databases & SQL queries",
+          "Assisted laboratory courses and mentored students on relational databases and SQL queries.",
         color: "bg-secondary",
       },
       {
-        year: "QA",
-        title: "Quality Assurance & Web Tester",
+        year: "POTEMA.ID",
+        title: "Volunteer Graphic Designer",
         place:
-          "Web-Dev.XML / Projects · Evaluated application responsiveness, validated model responses, logged functional test scenarios",
+          "Created branding and visual campaigns; recognized as Best Volunteer Graphic Designer.",
+        color: "bg-accent",
+      },
+      {
+        year: "Student Association & Village Project",
+        title: "Secretary & Documentation Coordinator",
+        place:
+          "Managed administrative documentation, coordinated cross-functional student teams, and led visual identity initiatives.",
         color: "bg-accent",
       },
     ],
   },
   {
-    id: "leadership",
-    label: "Leadership & Organization",
-    icon: Users,
+    id: "awards",
+    label: "Awards & Competitions",
+    icon: Star,
     items: [
       {
-        year: "Committee",
-        title: "Secretary / Committee Coordinator",
+        year: "Universitas Sam Ratulangi",
+        title: "3rd Place Winner - GEMASTIK (University Level)",
         place:
-          "Student Association Christmas Event & Campus Initiatives · Managed administrative documentation, coordinated cross-functional student teams & scheduling",
-        color: "bg-accent",
+          "Awarded 3rd place at the university level for the National Student Exhibition in Information and Communication Technology.",
+        color: "bg-primary",
+        marker: "🏆",
       },
       {
-        year: "Community",
-        title: "Documentation & Branding Coordinator",
-        place: "Village Community Project · Led UI design and visual identity initiatives",
-        color: "bg-sky",
+        year: "National Data Science Competition",
+        title: "National Finalist / Participant - SATRIA DATA",
+        place:
+          "Created data visualizations and infographics on poverty rates in rural and urban areas.",
+        color: "bg-secondary",
+        marker: "🏅",
+      },
+      {
+        year: "Digital Learning Innovation Competition",
+        title: "National Participant - LIDM",
+        place:
+          "Competed in the Education Digital Learning Innovation Division, focusing on UI/UX prototyping.",
+        color: "bg-accent",
+        marker: "🏅",
       },
     ],
   },
@@ -588,10 +614,20 @@ const TABS = [
     icon: GraduationCap,
     items: [
       {
-        year: "Computer Science · Bachelor's Degree",
-        title: "Universitas Sam Ratulangi",
-        place: "Bachelor of Computer Science (S.Kom) · Graduated Cum Laude — GPA 3.98 / 4.00 🎓",
+        year: "SMAN 9 Binsus Manado",
+        title: "Senior High School — Science (IPA)",
+        place:
+          "Graduated with an average score of 93.21. Participated in OMITS (ITS National Mathematics Olympiad).",
+        color: "bg-secondary",
+        marker: "📚",
+      },
+      {
+        year: "Universitas Sam Ratulangi",
+        title: "Bachelor of Computer Science (S.Kom)",
+        place:
+          "Graduated with Cum Laude honors. GPA: 3.98 / 4.00. Focus on Web Development and UI/UX.",
         color: "bg-primary",
+        marker: "🎓",
       },
     ],
   },
@@ -608,7 +644,7 @@ function Experience() {
         whileInView={{ opacity: 1, y: 0, rotate: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="brutal-lg overflow-hidden rounded-2xl bg-card"
+        className="brutal-lg overflow-hidden rounded-2xl bg-card dark:border-white dark:bg-[#1E1E24] dark:text-gray-100"
       >
         <div className="flex items-center gap-2 border-b-[2.5px] border-ink bg-muted px-4 py-3">
           <span className="h-3.5 w-3.5 rounded-full border-2 border-ink bg-destructive" />
@@ -616,7 +652,7 @@ function Experience() {
           <span className="h-3.5 w-3.5 rounded-full border-2 border-ink bg-secondary" />
           <span className="ml-3 font-pixel text-[10px]">journey.exe</span>
         </div>
-        <div className="flex flex-wrap gap-2 border-b-[2.5px] border-ink bg-background p-3">
+        <div className="flex flex-wrap gap-2 border-b-[2.5px] border-ink bg-background p-3 dark:border-white dark:bg-[#1E1E24]">
           {TABS.map((t, i) => (
             <button
               key={t.id}
@@ -624,7 +660,7 @@ function Experience() {
                 setTab(i);
                 blip(700 + i * 100);
               }}
-              className={`brutal brutal-press flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-bold sm:text-sm ${i === tab ? "bg-primary text-primary-foreground" : "bg-card"}`}
+              className={`flex items-center gap-2 rounded-full border-2 border-black px-3 py-1.5 text-xs font-bold transition-colors active:translate-x-0.5 active:translate-y-0.5 sm:text-sm dark:border-white ${i === tab ? "bg-[#FF5DA2] text-black" : "bg-transparent text-foreground"}`}
             >
               <t.icon size={14} /> {t.label}
             </button>
@@ -641,7 +677,12 @@ function Experience() {
             >
               {active.items.map((t) => (
                 <li key={t.title} className="relative flex list-none gap-5">
-                  <span className={`brutal z-10 mt-1 h-5 w-5 shrink-0 rounded-full ${t.color}`} />
+                  <span
+                    className={`brutal z-10 mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-base ${t.color} dark:border-white`}
+                    aria-hidden="true"
+                  >
+                    {t.marker}
+                  </span>
                   <div>
                     <span className="font-pixel text-[10px] text-muted-foreground">{t.year}</span>
                     <h3 className="font-display text-lg">{t.title}</h3>
@@ -653,6 +694,98 @@ function Experience() {
           </AnimatePresence>
         </ol>
       </motion.div>
+    </section>
+  );
+}
+
+function FeaturedProject() {
+  const technologies = ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MySQL"];
+  const achievements = [
+    "Inaugurated by the UNSRAT Rector and built with UPA BK & UPA TIK; actively used by students via the official university domain.",
+    "Developed DASS-21 mental health screening with personalized recommendations through a secure, anonymous cookie-based system.",
+    <>
+      Achieved an outstanding <strong>95.3% feasibility</strong> on User Acceptance Testing (UAT).
+    </>,
+    "Officially registered for Intellectual Property Rights (HKI) by DJKI Kemenkumham RI.",
+  ];
+
+  return (
+    <section
+      aria-labelledby="featured-project-title"
+      className="mx-auto max-w-6xl px-4 pb-12 pt-16 sm:pt-20"
+    >
+      <article className="flex flex-col gap-6 rounded-3xl border-[3px] border-black bg-[#FFFDF8] p-6 text-black shadow-[8px_8px_0px_#000] transition-transform duration-200 hover:-translate-y-1 dark:border-white dark:bg-[#1E1E24] dark:text-white dark:shadow-[8px_8px_0px_#fff] md:p-8 lg:flex-row lg:items-stretch lg:gap-8">
+        <div className="flex min-w-0 flex-1 items-center">
+          <div className="group aspect-video w-full overflow-hidden rounded-2xl border-[3px] border-black bg-[#FFE6F0] dark:border-white">
+            <iframe
+              src="https://www.youtube.com/embed/DDP9bwDvJ58?autoplay=1&mute=1&si=tsWkw2UTV6_ADAeR"
+              title="Titik Jeda project highlight video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="h-full w-full"
+            />
+          </div>
+        </div>
+
+        <div className="flex min-w-0 flex-1 flex-col items-start py-2 lg:py-1">
+          <span className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-[#FF5DA2] px-4 py-2 font-display text-xs text-black shadow-[3px_3px_0px_#000] sm:text-sm">
+            FEATURED FINAL PROJECT
+          </span>
+          <h2
+            id="featured-project-title"
+            className="mt-6 font-display text-3xl leading-[1.08] sm:text-4xl lg:text-5xl"
+          >
+            Mental Health Web Application (UNSRAT)
+          </h2>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {technologies.map((technology, index) => (
+              <span
+                key={technology}
+                className={`rounded-full border-2 border-black px-3 py-1.5 text-sm font-bold text-black dark:border-white ${
+                  index % 2 === 0 ? "bg-[#2BD980]" : "bg-[#FFE047]"
+                }`}
+              >
+                {technology}
+              </span>
+            ))}
+          </div>
+
+          <ul className="mt-7 space-y-4 text-base leading-relaxed sm:text-lg">
+            {achievements.map((achievement, index) => (
+              <li key={index} className="flex items-start gap-3">
+                <span
+                  aria-hidden="true"
+                  className="mt-0.5 flex size-7 shrink-0 items-center justify-center border-2 border-black bg-[#2BD980] font-display text-lg leading-none text-black dark:border-white"
+                >
+                  ★
+                </span>
+                <span>{achievement}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a
+              href="https://mentalsehat.unsrat.ac.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-14 items-center justify-center gap-3 rounded-xl border-[3px] border-black bg-[#2BD980] px-5 py-3 font-display text-base text-black shadow-[5px_5px_0px_#000] transition-transform hover:-translate-y-0.5 hover:-translate-x-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none dark:border-white dark:shadow-[5px_5px_0px_#fff] sm:text-lg"
+            >
+              Visit Live Web App <ExternalLink size={20} aria-hidden="true" />
+            </a>
+            <a
+              href="https://github.com/febbyyyyh/udah-fix-banget-skripsi-febi-.git"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-14 items-center justify-center gap-3 rounded-xl border-[3px] border-black bg-[#FF5DA2] px-5 py-3 font-display text-base text-black shadow-[5px_5px_0px_#000] transition-transform hover:-translate-y-0.5 hover:-translate-x-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none dark:border-white dark:shadow-[5px_5px_0px_#fff] sm:text-lg"
+            >
+              GitHub Repo <Code2 size={20} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </article>
     </section>
   );
 }
@@ -708,9 +841,14 @@ function ProjectFolder({
 
           <div className="p-1.5">
             <img
-              src="https://placehold.co/600x400/FF5DA2/FFFDF8?text=Project+Screenshot"
+              src={
+                p.screenshots[0]?.src ||
+                "https://placehold.co/600x400/FF5DA2/FFFDF8?text=Project+Screenshot"
+              }
               alt={`${p.title} project screenshot preview`}
-              className="mx-auto aspect-video w-full max-w-48 border-2 border-black object-cover"
+              className={`mx-auto aspect-video w-full max-w-48 border-2 border-black ${
+                p.screenshots[0]?.fit === "contain" ? "bg-[#FFFDF8] object-contain" : "object-cover"
+              }`}
             />
             <div className="mt-2 flex items-start justify-between gap-2">
               <h3 className="line-clamp-1 font-display text-sm leading-tight">{p.title}</h3>
@@ -718,6 +856,7 @@ function ProjectFolder({
                 Open <ExternalLink size={10} />
               </span>
             </div>
+            <p className="mt-1 line-clamp-2 text-[9px] leading-tight text-black/80">{p.summary}</p>
             <div className="mt-1 flex flex-wrap gap-1">
               {p.tech.map((t, techIndex) => (
                 <span
@@ -847,7 +986,11 @@ function Projects() {
                         selectedProject.screenshots[activeScreenshot]?.caption ??
                         `Screenshot ${activeScreenshot + 1}`
                       }`}
-                      className="aspect-video w-full border-2 border-black object-cover transition-transform duration-200 hover:rotate-1"
+                      className={`aspect-video w-full border-2 border-black transition-transform duration-200 hover:rotate-1 ${
+                        selectedProject.screenshots[activeScreenshot]?.fit === "contain"
+                          ? "bg-[#FFFDF8] object-contain"
+                          : "object-cover"
+                      }`}
                     />
                     <div className="mt-2 flex items-center justify-between gap-3">
                       <p className="truncate font-mono text-[10px] font-bold uppercase">
@@ -915,6 +1058,11 @@ function Projects() {
                     <p className="mt-4 text-sm leading-relaxed text-gray-800 sm:text-base">
                       {selectedProject.description}
                     </p>
+                    {selectedProject.role && (
+                      <p className="mt-3 border-l-4 border-[#FF5DA2] pl-3 text-sm font-bold">
+                        Role: {selectedProject.role}
+                      </p>
+                    )}
 
                     <h3 className="mt-6 font-display text-lg">Tech stack</h3>
                     <div className="mt-2 flex flex-wrap gap-2">
@@ -930,24 +1078,42 @@ function Projects() {
                       ))}
                     </div>
 
-                    <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:mt-auto lg:pt-8">
-                      <a
-                        href="https://example.com"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="brutal brutal-press inline-flex items-center justify-center gap-2 rounded-full bg-[#2BD980] px-4 py-2.5 text-sm font-bold text-black active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
-                      >
-                        View Live Site <ExternalLink size={16} />
-                      </a>
-                      <a
-                        href={selectedProject.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="brutal brutal-press inline-flex items-center justify-center gap-2 rounded-full bg-[#FFE6F0] px-4 py-2.5 text-sm font-bold text-black active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
-                      >
-                        GitHub Repo <Code2 size={16} />
-                      </a>
-                    </div>
+                    {(selectedProject.liveHref ||
+                      selectedProject.repositoryHref ||
+                      selectedProject.designHref) && (
+                      <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:mt-auto lg:pt-8">
+                        {selectedProject.liveHref && (
+                          <a
+                            href={selectedProject.liveHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="brutal brutal-press inline-flex items-center justify-center gap-2 rounded-full bg-[#2BD980] px-4 py-2.5 text-sm font-bold text-black active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+                          >
+                            View Live Site <ExternalLink size={16} />
+                          </a>
+                        )}
+                        {selectedProject.repositoryHref && (
+                          <a
+                            href={selectedProject.repositoryHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="brutal brutal-press inline-flex items-center justify-center gap-2 rounded-full bg-[#FFE6F0] px-4 py-2.5 text-sm font-bold text-black active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+                          >
+                            GitHub Repo <Code2 size={16} />
+                          </a>
+                        )}
+                        {selectedProject.designHref && (
+                          <a
+                            href={selectedProject.designHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="brutal brutal-press inline-flex items-center justify-center gap-2 rounded-full bg-[#FFE047] px-4 py-2.5 text-sm font-bold text-black active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+                          >
+                            Figma Link <ExternalLink size={16} />
+                          </a>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -993,79 +1159,92 @@ function Projects() {
 /* ---------- Certifications: brutalist badge vault ---------- */
 const CERTS = [
   {
-    title: "Becoming an Expert React Web Developer",
+    title: "Menjadi React Web Developer Expert",
     issuer: "Dicoding Indonesia",
     id: "6RPNO63R4X2M",
-    date: "Sep 2026 – Sep 2029",
+    date: "Sep 2026 · Valid through Sep 2029",
+    image: "/assets/menjadi%20react%20web%20dev%20expert.png",
+    url: "https://www.dicoding.com/certificates/6RPNO63R4X2M",
   },
   {
-    title: "React Web App Fundamentals",
+    title: "Belajar Fundamental Aplikasi Web dengan React",
     issuer: "Dicoding Indonesia",
     id: "N9ZO0DJ0YXG5",
-    date: "Aug 2026 – Aug 2029",
+    date: "Aug 2026 · Valid through Aug 2029",
+    image: "/assets/Fundamental%20Aplikasi%20Web%20dengan%20Reactjs.png",
+    url: "https://www.dicoding.com/certificates/N9ZO0DJ0YXG5",
   },
   {
-    title: "Building a React Web App",
+    title: "Belajar Membuat Aplikasi Web dengan React",
     issuer: "Dicoding Indonesia",
     id: "GRX50G232Z0M",
-    date: "Aug 2026 – Aug 2029",
+    date: "Aug 2026 · Valid through Aug 2029",
+    image: "/assets/membuat%20aplikasi%20web%20dengan%20react.png",
+    url: "https://www.dicoding.com/certificates/GRX50G232Z0M",
   },
   {
-    title: "DevOps Fundamentals",
+    title: "Belajar Dasar-Dasar DevOps",
     issuer: "Dicoding Indonesia",
     id: "MRZMV4KKLZYQ",
-    date: "Sep 2026 – Sep 2029",
+    date: "Sep 2026 · Valid through Sep 2029",
+    image: "/assets/belajar%20dasar%20devops.png",
+    url: "https://www.dicoding.com/certificates/MRZMV4KKLZYQ",
   },
   {
-    title: "SQL Fundamentals",
+    title: "Belajar Dasar Structured Query Language (SQL)",
     issuer: "Dicoding Indonesia",
     id: "98XW8RM10PM3",
-    date: "Sep 2026 – Sep 2029",
+    date: "Sep 2026 · Valid through Sep 2029",
+    image: "/assets/belajar%20dasar%20sql.png",
+    url: "https://www.dicoding.com/certificates/98XW8RM10PM3",
   },
   {
-    title: "Data Visualization Fundamentals",
+    title: "Belajar Dasar Visualisasi Data",
     issuer: "Dicoding Indonesia",
     id: "MRZMVD6ONZYQ",
-    date: "Sep 2026 – Sep 2029",
+    date: "Sep 2026 · Valid through Sep 2029",
+    image: "/assets/Belajar%20Dasar%20Visualisasi%20Data.png",
+    url: "https://www.dicoding.com/certificates/MRZMVD6ONZYQ",
   },
   {
-    title: "Mobile App Development Fundamentals",
+    title: "Belajar Dasar Pengembangan Aplikasi Mobile",
     issuer: "Dicoding Indonesia",
     id: "1OP875WE1ZQK",
-    date: "Sep 2026 – Sep 2029",
+    date: "Sep 2026 · Valid through Sep 2029",
+    image: "/assets/belajar%20dasar%20pengembangan%20aplikasi%20mobile.png",
+    url: "https://www.dicoding.com/certificates/1OP875WE1ZQK",
   },
   {
     title: "Intro to UI/UX (Gold)",
     issuer: "Skilvul",
     id: "mQjxuloaTiup48wgje6UFA",
-    date: "Nov 2024 – Nov 2026",
+    date: "Nov 2024 · Valid through Nov 2026",
+    image: "/assets/certi%20intro%20to%20UI_UX.png",
+    url: "https://badgr.com/public/assertions/mQjxuloaTiup48wgje6UFA?identity__email=febilengkong7%40gmail.com",
   },
   {
     title: "Intro to Data Analytics",
     issuer: "RevoU",
     id: "DAMC-06012025-01-1-00055",
     date: "Issued Jan 2025",
+    image: "/assets/intro%20to%20data%20analytics.png",
+    url: "https://drive.google.com/file/d/1qROX2KtBfg-7_cEBi2wJMsuKw8lo3c_L/view",
   },
   {
-    title: "Design Thinking 101",
-    issuer: "Future Skills by Pijar Foundation",
+    title: "Pemikiran Desain 101",
+    issuer: "Future Skills Indonesia by Pijar Foundation",
     id: "079167/142/FCC/25",
     date: "Issued Jan 2025",
+    image: "/assets/pemikiran%20desain%20101.png",
   },
   {
-    title: "Using Microsoft Excel for Data Management",
+    title: "Memahami Penggunaan Microsoft Excel untuk Mengelola Pendataan",
     issuer: "Future Skills Indonesia",
     id: "078677/140/FCC/25",
     date: "Issued Jan 2025",
+    image: "/assets/serti%20memahami%20excel.png",
   },
-  {
-    title: "Google Play Store Listing Certificate",
-    issuer: "Google Play Academy",
-    id: "118229643",
-    date: "Oct 2024 – Oct 2027",
-  },
-  { title: "C++", issuer: "Sololearn", id: "CT-J7IHQHRE", date: "Issued Oct 2022" },
-].map((cert) => ({ ...cert, url: "https://example.com" }));
+];
 
 function Certifications() {
   const [selectedCert, setSelectedCert] = useState<(typeof CERTS)[number] | null>(null);
@@ -1099,6 +1278,11 @@ function Certifications() {
             viewport={{ once: true }}
             className="brutal flex flex-col rounded-2xl bg-card p-5"
           >
+            <img
+              src={c.image}
+              alt={`${c.title} certificate`}
+              className="mb-4 aspect-video w-full rounded-lg border-2 border-ink bg-card object-contain"
+            />
             <div className="flex items-start justify-between gap-2">
               <BadgeCheck className="shrink-0 text-primary" size={26} />
               <span className="rounded-full border-2 border-ink bg-muted px-2 font-pixel text-[8px]">
@@ -1162,18 +1346,11 @@ function Certifications() {
               </div>
 
               <div className="max-h-[calc(100dvh-8rem)] overflow-y-auto p-4 sm:p-7">
-                <div
-                  role="img"
-                  aria-label={`Preview placeholder for ${selectedCert.title}`}
-                  className="grid min-h-52 place-items-center border-2 border-black bg-[#FFE6F0] p-6 sm:min-h-72"
-                >
-                  <div className="w-full max-w-md border-[3px] border-black bg-[#FFFDF8] p-5 text-center shadow-[5px_5px_0px_#000] dark:border-white dark:bg-[#1E1E24] dark:text-white dark:shadow-[5px_5px_0px_#fff] sm:p-8">
-                    <BadgeCheck className="mx-auto text-[#FF5DA2]" size={42} />
-                    <p className="mt-4 font-pixel text-[9px] text-black/60">CERTIFICATE PREVIEW</p>
-                    <p className="mt-3 font-display text-lg sm:text-2xl">{selectedCert.title}</p>
-                    <span className="mx-auto mt-5 block h-2 w-24 bg-[#2BD980]" />
-                  </div>
-                </div>
+                <img
+                  src={selectedCert.image}
+                  alt={`${selectedCert.title} certificate`}
+                  className="w-full border-2 border-black bg-white object-contain"
+                />
 
                 <div className="mt-5 border-[3px] border-black bg-white p-4 dark:border-white dark:bg-[#1E1E24] dark:text-white sm:p-5">
                   <p className="font-pixel text-[9px] text-[#FF5DA2]">CREDENTIAL DETAILS</p>
@@ -1204,14 +1381,16 @@ function Certifications() {
                   >
                     Close
                   </button>
-                  <a
-                    href={selectedCert.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="brutal brutal-press inline-flex items-center justify-center gap-2 rounded-full bg-[#2BD980] px-5 py-2.5 text-center font-bold text-black"
-                  >
-                    Verify Original Credential <ExternalLink size={16} />
-                  </a>
+                  {selectedCert.url && (
+                    <a
+                      href={selectedCert.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="brutal brutal-press inline-flex items-center justify-center gap-2 rounded-full bg-[#2BD980] px-5 py-2.5 text-center font-bold text-black"
+                    >
+                      Verify Original Credential <ExternalLink size={16} />
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -1513,12 +1692,22 @@ function Contact() {
     { icon: Mail, label: EMAIL, href: MAILTO, c: "bg-primary" },
     {
       icon: Briefcase,
-      label: "linkedin.com/in/dummy",
-      href: "https://linkedin.com/in/dummy",
+      label: "linkedin.com/in/febiola-lengkong",
+      href: "https://www.linkedin.com/in/febiola-lengkong/",
       c: "bg-secondary",
     },
-    { icon: Code2, label: "github.com/dummy", href: "https://github.com/dummy", c: "bg-accent" },
-    { icon: Palette, label: "behance.net/dummy", href: "https://behance.net/dummy", c: "bg-sky" },
+    {
+      icon: Code2,
+      label: "github.com/febbyyyyh",
+      href: "https://github.com/febbyyyyh",
+      c: "bg-accent",
+    },
+    {
+      icon: Palette,
+      label: "behance.net/hueofhaze",
+      href: "https://www.behance.net/hueofhaze",
+      c: "bg-sky",
+    },
   ];
   return (
     <section id="contact" className="mx-auto max-w-5xl scroll-mt-28 px-4 py-20">
