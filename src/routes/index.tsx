@@ -614,20 +614,20 @@ const TABS = [
     icon: GraduationCap,
     items: [
       {
-        year: "SMAN 9 Binsus Manado",
-        title: "Senior High School — Science (IPA)",
-        place:
-          "Graduated with an average score of 93.21. Participated in OMITS (ITS National Mathematics Olympiad).",
-        color: "bg-secondary",
-        marker: "📚",
-      },
-      {
         year: "Universitas Sam Ratulangi",
         title: "Bachelor of Computer Science (S.Kom)",
         place:
           "Graduated with Cum Laude honors. GPA: 3.98 / 4.00. Focus on Web Development and UI/UX.",
         color: "bg-primary",
         marker: "🎓",
+      },
+      {
+        year: "SMAN 9 Binsus Manado",
+        title: "Senior High School — Science (IPA)",
+        place:
+          "Graduated with an average score of 93.21. Participated in OMITS (ITS National Mathematics Olympiad).",
+        color: "bg-secondary",
+        marker: "📚",
       },
     ],
   },
