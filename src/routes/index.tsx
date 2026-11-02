@@ -409,6 +409,7 @@ const TAGS = [
   "UI/UX Design",
   "Figma",
   "Quality Assurance",
+  "Administration",
   "Responsive Layout",
   "DevOps Basics",
   "Data Analysis",
@@ -426,6 +427,7 @@ const SKILL_INFO: Record<string, string> = {
   "UI/UX Design": "Expert — wireframes, prototypes, design thinking",
   Figma: "Expert — AutoLayout, components, design systems",
   "Quality Assurance": "Skilled — test scenarios, responsiveness checks, bug hunting 🐛",
+  Administration: "Skilled — documentation, coordination, and administrative support",
   "Responsive Layout": "Expert — mobile-first, accessible layouts",
   "DevOps Basics": "Certified — Dicoding DevOps fundamentals",
   "Data Analysis": "Foundational — continuing to develop data analysis and visualization skills",
@@ -524,12 +526,13 @@ function About() {
           I am an Informatics Engineering graduate specializing in Web Development, with a focus on
           Frontend Development and a strong foundation in UI/UX and Graphic Design. I also bring
           hands-on Quality Assurance experience, testing responsive interfaces and validating
-          functionality. I enjoy transforming complex workflows into accessible, bold, and
-          pixel-perfect digital experiences, with thoughtful design and clear communication at the
-          heart of my work. My active background in campus organizations has refined my
-          adaptability, problem-solving, and collaborative skills. Detail-oriented and
-          growth-minded, I am eager to bring a practical combination of web development skills,
-          design awareness, and team spirit to a forward-thinking company.
+          functionality, along with administrative experience organizing documents and coordinating
+          teams. I enjoy transforming complex workflows into accessible, bold, and pixel-perfect
+          digital experiences, with thoughtful design and clear communication at the heart of my
+          work. My active background in campus organizations has refined my adaptability,
+          problem-solving, and collaborative skills. Detail-oriented and growth-minded, I am eager
+          to bring a practical combination of web development skills, design awareness, and team
+          spirit to a forward-thinking company.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           {TAGS.map((t) => (
@@ -775,14 +778,6 @@ function FeaturedProject() {
               className="inline-flex min-h-14 items-center justify-center gap-3 rounded-xl border-[3px] border-black bg-[#2BD980] px-5 py-3 font-display text-base text-black shadow-[5px_5px_0px_#000] transition-transform hover:-translate-y-0.5 hover:-translate-x-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none dark:border-white dark:shadow-[5px_5px_0px_#fff] sm:text-lg"
             >
               Visit Live Web App <ExternalLink size={20} aria-hidden="true" />
-            </a>
-            <a
-              href="https://github.com/febbyyyyh/udah-fix-banget-skripsi-febi-.git"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-3 rounded-xl border-[3px] border-black bg-[#FF5DA2] px-5 py-3 font-display text-base text-black shadow-[5px_5px_0px_#000] transition-transform hover:-translate-y-0.5 hover:-translate-x-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none dark:border-white dark:shadow-[5px_5px_0px_#fff] sm:text-lg"
-            >
-              GitHub Repo <Code2 size={20} aria-hidden="true" />
             </a>
           </div>
         </div>
