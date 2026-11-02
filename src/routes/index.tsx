@@ -522,13 +522,14 @@ function About() {
         </div>
         <p className="mt-4 text-muted-foreground">
           I am an Informatics Engineering graduate specializing in Web Development, with a focus on
-          Frontend Development and a strong foundation in UI/UX and Graphic Design. I enjoy
-          transforming complex workflows into accessible, bold, and pixel-perfect digital
-          experiences, with thoughtful design and clear communication at the heart of my work. My
-          active background in campus organizations has refined my adaptability, problem-solving,
-          and collaborative skills. Detail-oriented and growth-minded, I am eager to bring a
-          practical combination of web development skills, design awareness, and team spirit to a
-          forward-thinking company.
+          Frontend Development and a strong foundation in UI/UX and Graphic Design. I also bring
+          hands-on Quality Assurance experience, testing responsive interfaces and validating
+          functionality. I enjoy transforming complex workflows into accessible, bold, and
+          pixel-perfect digital experiences, with thoughtful design and clear communication at the
+          heart of my work. My active background in campus organizations has refined my
+          adaptability, problem-solving, and collaborative skills. Detail-oriented and
+          growth-minded, I am eager to bring a practical combination of web development skills,
+          design awareness, and team spirit to a forward-thinking company.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           {TAGS.map((t) => (
