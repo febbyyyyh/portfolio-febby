@@ -162,6 +162,14 @@ const ARCHIVE_GROUPS = [
         caption: "A PPK Ormawa team gathering",
       },
       {
+        src: "/assets/QA.jpg",
+        caption: "Celebrating a Quality Assurance achievement with the team",
+      },
+      {
+        src: "/assets/sertifikat-ppk ormawa.jpg",
+        caption: "PPK Ormawa 2024 implementation team certificate",
+      },
+      {
         src: "/assets/archive/kuliah-pranatal.webp",
         caption: "A PRANATAL HME gathering",
       },

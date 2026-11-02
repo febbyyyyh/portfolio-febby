@@ -47,7 +47,6 @@ export const Route = createFileRoute("/")({
 
 const NAV = ["About", "Experience", "Projects", "Certifications", "Contact"];
 const CV = "/assets/cv%20web%20devloper.pdf";
-const GRAPHIC_DESIGN_PORTFOLIO = "/assets/POROTOFLIO_FEBI.pdf";
 const EMAIL = "febilengkong7@gmail.com";
 const MAILTO = `mailto:${EMAIL}`;
 const CONFETTI_COLORS = ["#FF5DA2", "#2BD980", "#A3E635", "#FFE6F0"];
@@ -108,7 +107,6 @@ function Index() {
       <Experience />
       <FeaturedProject />
       <Projects />
-      <GraphicDesignPortfolio />
       <Certifications />
       <EmergencyRoom />
       <Contact />
@@ -367,13 +365,6 @@ function Hero() {
             className="brutal brutal-press flex items-center gap-2 rounded-full bg-secondary px-6 py-3 font-bold text-secondary-foreground"
           >
             <Mail size={18} /> Hire Me
-          </a>
-          <a
-            href="#graphic-design"
-            onClick={() => blip()}
-            className="brutal brutal-press flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-bold text-accent-foreground"
-          >
-            <Palette size={18} /> Graphic Design Portfolio
           </a>
         </div>
       </div>
@@ -1161,50 +1152,6 @@ function Projects() {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
-  );
-}
-
-function GraphicDesignPortfolio() {
-  return (
-    <section
-      id="graphic-design"
-      className="mx-auto max-w-6xl scroll-mt-28 px-4 py-20"
-      aria-labelledby="graphic-design-title"
-    >
-      <SectionTitle>Graphic Design Portfolio</SectionTitle>
-      <div className="brutal-lg flex flex-col items-center gap-6 rounded-3xl bg-card p-6 text-center md:flex-row md:p-10 md:text-left">
-        <div className="brutal flex size-20 shrink-0 items-center justify-center rounded-2xl bg-accent text-accent-foreground">
-          <Palette size={40} aria-hidden="true" />
-        </div>
-        <div className="flex-1">
-          <h3 id="graphic-design-title" className="font-display text-2xl md:text-3xl">
-            A closer look at my visual work
-          </h3>
-          <p className="mt-2 text-muted-foreground">
-            Browse my graphic design portfolio in PDF format, or download a copy to view later.
-          </p>
-        </div>
-        <div className="flex shrink-0 flex-wrap justify-center gap-3">
-          <a
-            href={GRAPHIC_DESIGN_PORTFOLIO}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => blip()}
-            className="brutal brutal-press inline-flex min-h-12 items-center gap-2 rounded-full bg-primary px-5 py-3 font-bold text-primary-foreground"
-          >
-            View portfolio <ExternalLink size={18} aria-hidden="true" />
-          </a>
-          <a
-            href={GRAPHIC_DESIGN_PORTFOLIO}
-            download="Febiola-Graphic-Design-Portfolio.pdf"
-            onClick={() => blip()}
-            className="brutal brutal-press inline-flex min-h-12 items-center gap-2 rounded-full bg-secondary px-5 py-3 font-bold text-secondary-foreground"
-          >
-            <Download size={18} aria-hidden="true" /> Download PDF
-          </a>
-        </div>
-      </div>
     </section>
   );
 }
